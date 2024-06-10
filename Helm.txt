@@ -54,7 +54,8 @@ kubectl edit svc kubernetes-dashboard
 kubectl get svc 
 
 # Now use the external IP & Nodeport to access the dashboard. When it asked for token, execute following commands to create service account & token
-
+# kubectl edit svc kubernetes-dashboard, then it open the manfist flie, go insert mode to edit, look for type ClusterIP, rename it to NodePort, then escape , :wq to save the file,
+# check the svc, it will change to Nodeport
 kubectl create serviceaccount dashboard -n default
 
 kubectl create clusterrolebinding dashboard-admin -n default --clusterrole=cluster-admin --serviceaccount=default:dashboard
